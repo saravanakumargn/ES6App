@@ -1,0 +1,27 @@
+<ion-view>
+  <ion-nav-title>{{header}}</ion-nav-title>
+  <ion-content padding="true">
+    <!--<section >
+      <p>For example, looking up <code>nodejs.org</code>.</p> <pre><code class="lang-js">const dns = require(&#39;dns&#39;); dns.lookup(&#39;nodejs.org&#39;, (err, addresses, family) =&gt; { console.log(&#39;addresses:&#39;, addresses); }); </code></pre>
+      <section hljs>const dns = require('dns');
+
+dns.lookup('nodejs.org', (err, addresses, family) => {
+  console.log('addresses:', addresses);
+});</section>
+    </section>-->
+    <!--<section ng-bind-html="pageContent"></section>-->
+    <!--<section>
+      <h1>test</h1>
+    <section hljs>// Change heading:
+document.getElementById("myH").innerHTML = "My First Page";
+// Change paragraph:
+document.getElementById("myP").innerHTML = "My first paragraph.";</section>
+    </section>-->
+    
+    <div ng-repeat="template in templates" ng-include="template.url"></div>
+    <!--<div ng-include=pageId></div>-->
+    <!--<div ng-include src={{pageId}}></div>-->
+    <!--<div ng-include src="'assets/pages/js_home.tpl.html'"></div>-->
+  </ion-content>
+
+</ion-view>

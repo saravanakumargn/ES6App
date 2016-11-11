@@ -1,0 +1,35 @@
+<h2>Destructuring assignment</h2>
+<p>The destructuring assignment syntax is a JavaScript expression that makes it possible to extract data from arrays or objects into distinct variables.</p>
+<section hljs hljs-no-escape>
+var [a,b] = [2,3];
+console.log(a); // 2
+console.log(b); // 3
+
+var [a, b, ...rest] = [1, 2, 3, 4, 5];
+console.log(a); // 1
+console.log(b); // 2
+console.log(rest); // [3, 4, 5]
+</section>
+<h4>Object destructuring</h4>
+<section hljs hljs-no-escape>
+var obj = {total: 42, isValid: true};
+var {total, isValid} = obj;
+//var {isValid, total } = o; // This is equivalent to the above assignment.
+var {totalValue, isValidFlag} = obj;
+console.log(total); // 42
+console.log(isValid); // true
+
+console.log(typeof total); // number
+console.log(typeof isValid); // boolean
+
+//Different declaration names returns wrong value
+console.log(totalValue); // undefined
+console.log(isValidFlag); // undefined
+</section>
+<section hljs hljs-no-escape>
+var [a] = [];
+console.log(a); // undefined
+var [b = 1] = [];
+console.log(b); // 1
+</section>
+<br/>

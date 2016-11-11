@@ -1,0 +1,18 @@
+<h2>Default parameters</h2>
+<p>Default function parameters allow formal parameters to be initialized with default values if no value or undefined is passed.</p>
+<section hljs hljs-no-escape>
+function multiply(value1=1, value2=1) {
+    return value1 * value2;
+}
+console.log(multiply(4)); // 4
+</section>
+<p>The above default parameter code is equivalent to the following code.</p>
+<section hljs hljs-no-escape>
+function multiply(value1, value2) {
+    if (value1 === void 0) { value1 = 1; }
+    if (value2 === void 0) { value2 = 1; }
+    return value1 * value2;
+}
+console.log(multiply(4)); // 4
+</section>
+<br/>

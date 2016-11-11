@@ -1,0 +1,34 @@
+/*.source {
+    margin-bottom: 6px;
+}*/
+
+section[hljs] {
+    margin-bottom: 6px;
+}
+
+li { 
+    padding-left: 16px; 
+    margin-bottom: 6px;
+}
+
+li:before {
+    content: "•"; /* Insert content that looks like bullets */
+    padding-right: 8px;
+    /*color: blue;  Or a color you prefer */
+}
+
+code {
+    padding: 2px 4px;
+    font-size: 90%;
+    color: #c7254e;
+    background-color: #f9f2f4;
+    border-radius: 4px;
+}
+
+.bar.bar-stable .title {
+    color: #FFFFFF;
+}
+
+.bar-stable .button.button-clear {
+    color: #FFFFFF;
+}

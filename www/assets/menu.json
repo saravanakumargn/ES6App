@@ -1,0 +1,44 @@
+{
+  "menu": [
+    {
+      "url": "js_intro",
+      "header": "Introduction"
+    },
+    {
+      "url": "js_let_constants",
+      "header": "Let & Constants"
+    },
+    {
+      "url": "js_arrow",
+      "header": "Arrow functions"
+    },
+    {
+      "url": "js_rest_parameter",
+      "header": "Rest parameter"
+    },
+    {
+      "url": "js_default_parameters",
+      "header": "Default parameters"
+    },
+    {
+      "url": "js_spread_operator",
+      "header": "Spread operator"
+    },
+    {
+      "url": "js_destructuring",
+      "header": "Destructuring"
+    },
+    {
+      "url": "js_classes",
+      "header": "Classes"
+    },
+    {
+      "url": "js_collections_set",
+      "header": "Collections - Set"
+    },    
+    {
+      "url": "js_collections_map",
+      "header": "Collections - Map"
+    }
+  ]
+}
