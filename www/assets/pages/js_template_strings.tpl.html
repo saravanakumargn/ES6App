@@ -1,0 +1,24 @@
+<h2>Template Strings</h2>
+<p>Template Strings use back-ticks <code>`...`</code> rather than the single or double quotes we're used to with regular strings. </p>
+<section hljs hljs-no-escape>
+var greeting = `Hello World!`;     
+</section>
+<h4>String interpolation</h4>
+<p>Expressions can be included within strings using <code>$(...)</code> syntax, as below:</p>
+<section hljs hljs-no-escape>
+var name = 'World!';
+console.log(`Hello ${name}`); // Hello World!     
+</section>
+<p>The above code (ES6 standard) is equal to the below code</p>
+<section hljs hljs-no-escape>
+var name = 'World!';
+console.log("Hello " + name);     
+</section>
+<h4>Examples</h4>
+<section hljs hljs-no-escape>
+var a = 10, b = 20;
+console.log(`Addition value for ${a} and ${b} is ${a+b}`); // Addition value for 10 and 20 is 30
+
+var user = {name: 'gns'};
+console.log(`Current User: ${user.name.toUpperCase()}.`); // Current User: GNS.
+</section>

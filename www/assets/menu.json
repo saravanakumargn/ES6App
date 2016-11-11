@@ -5,6 +5,10 @@
       "header": "Introduction"
     },
     {
+      "url": "js_template_strings",
+      "header": "Template Strings"
+    },
+    {
       "url": "js_let_constants",
       "header": "Let & Constants"
     },
