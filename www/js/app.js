@@ -28,5 +28,3 @@ angular.module('starter', ['ionic', 'starter.controllers', 'hljs'])
   }
 }).filter('unsafe', function($sce) { return $sce.trustAsHtml; })
 ;
-
-// hljs.initHighlightingOnLoad();
