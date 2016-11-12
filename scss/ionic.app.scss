@@ -15,7 +15,7 @@ $royal:                           #886aea !default;
 $dark:                            #444 !default;
 */
 
-$stable:                          #2196F3 !default;
+$stable:                          #ee9c4f !default;
 $light:                           #fff !default;
 $stable:                          #f8f8f8 !default;
 $positive:                        #387ef5 !default;
@@ -27,6 +27,10 @@ $royal:                           #886aea !default;
 $dark:                            #444 !default;
 $popup-background-color:          rgba(255,255,255,1);
 
+$button-stable-text:              #024e3e;
+$button-stable-border:            #ee9c4f;
+$base-background-color:           #ffa754;
+$base-color:                      #080603;
 
 // The path for our ionicons font files, relative to the built CSS in www/css
 $ionicons-font-path: "../lib/ionic/fonts" !default;
