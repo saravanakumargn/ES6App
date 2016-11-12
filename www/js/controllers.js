@@ -5,7 +5,7 @@ angular.module('starter.controllers', [])
   ;
 
 AppCtrl.$inject = ['$scope', 'pageService', '$ionicSideMenuDelegate', '$ionicPopup'];
-PageController.$inject = ['$scope', '$stateParams', 'pageService', '$state', '$window'];
+PageController.$inject = ['$scope', '$stateParams', 'pageService', '$state', '$window', '$ionicViewSwitcher'];
 
 function AppCtrl($scope, pageService, $ionicSideMenuDelegate, $ionicPopup) {
   $scope.menuItems = [];
@@ -30,8 +30,6 @@ function AppCtrl($scope, pageService, $ionicSideMenuDelegate, $ionicPopup) {
     };
   };
 
-
-
   $scope.showAlert = function (event) {
     $ionicPopup.alert({
       title: event.target.text,
@@ -40,33 +38,39 @@ function AppCtrl($scope, pageService, $ionicSideMenuDelegate, $ionicPopup) {
   };
 }
 
-function PageController($scope, $stateParams, pageService, $state, $window) {
+function PageController($scope, $stateParams, pageService, $state, $window, $ionicViewSwitcher) {
+  var menus = [], pageUrl = $stateParams.pageUrl, pageWidth = $window.innerWidth, tapSideWidth = 20, prevNav = null, nextNav = null;
   $scope.templates = [];
   $scope.headerHide = true;
-  var menus = [], pageUrl = $stateParams.pageUrl, pageWidth = $window.innerWidth, tapSideWidth = 20, prevNav = null, nextNav = null;
   $scope.templates = [
     {
       url: 'assets/pages/' + pageUrl + '.tpl.html'
     }
   ];
   $scope.header = "";
+  $scope.navDirectionSide = "back";
+
   $scope.onTapPage = function (event) {
+    $scope.navDirectionSide = "forward";
     var touchX = event.gesture.center.pageX;
     if (touchX < pageWidth * (tapSideWidth / 100)) {
       if (prevNav != null) {
+        $ionicViewSwitcher.nextDirection('back');
         $state.go('app.page', { pageUrl: prevNav });
       }
     }
     else if (touchX > pageWidth * ((100 - tapSideWidth) / 100)) {
       if (nextNav != null) {
+        $ionicViewSwitcher.nextDirection('forward');
         $state.go('app.page', { pageUrl: nextNav });
       }
     }
     else {
       $scope.headerHide = !$scope.headerHide;
     }
-  }
-  
+  };
+
+
   pageService.getMenuItems().then(function (result) {
     menus = result.menu;
     var menuItemIndex = 0;
