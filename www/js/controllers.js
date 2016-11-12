@@ -5,7 +5,7 @@ angular.module('starter.controllers', [])
   ;
 
 AppCtrl.$inject = ['$scope', 'pageService', '$ionicSideMenuDelegate', '$ionicPopup'];
-PageController.$inject = ['$scope', '$stateParams', 'pageService'];
+PageController.$inject = ['$scope', '$stateParams', 'pageService', '$state', '$window'];
 
 function AppCtrl($scope, pageService, $ionicSideMenuDelegate, $ionicPopup) {
   $scope.menuItems = [];
@@ -16,6 +16,21 @@ function AppCtrl($scope, pageService, $ionicSideMenuDelegate, $ionicPopup) {
       $scope.menuItems = result.menu;
     });
   }
+  $scope.showPopup = function (event) {
+    var menuPopup = $ionicPopup.show({
+      cssClass: 'menu',
+      scope: $scope,
+      template: '<a class="item " ng-repeat="item in menuItems" href="#/app/page/{{item.url}}" ng-click="closePopup()">{{item.header}}</a>',
+      buttons: [{
+        text: '<i class="icon ion-close"></i>'
+      }]
+    });
+    $scope.closePopup = function () {
+      menuPopup.close();
+    };
+  };
+
+
 
   $scope.showAlert = function (event) {
     $ionicPopup.alert({
@@ -25,20 +40,51 @@ function AppCtrl($scope, pageService, $ionicSideMenuDelegate, $ionicPopup) {
   };
 }
 
-function PageController($scope, $stateParams, pageService) {
+function PageController($scope, $stateParams, pageService, $state, $window) {
   $scope.templates = [];
-  var menus = [], pageUrl = $stateParams.pageUrl;
+  // $scope.prevNav = null;
+  // $scope.nextNav = null;
+  $scope.headerHide = true;
+  var menus = [], pageUrl = $stateParams.pageUrl, pageWidth = $window.innerWidth, tapSideWidth = 20, prevNav = null, nextNav = null;
   $scope.templates = [
     {
       url: 'assets/pages/' + pageUrl + '.tpl.html'
     }
   ];
   $scope.header = "";
+  $scope.onTapPage = function (event) {
+    var touchX = event.gesture.center.pageX;
+    if (touchX < pageWidth * (tapSideWidth / 100)) {
+      if (prevNav != null) {
+        $state.go('app.page', { pageUrl: prevNav });
+      }
+    }
+    else if (touchX > pageWidth * ((100 - tapSideWidth) / 100)) {
+      if (nextNav != null) {
+        $state.go('app.page', { pageUrl: nextNav });
+      }
+    }
+    else {
+      $scope.headerHide = !$scope.headerHide;
+    }
+  }
+  
+  // $scope.setPageUrl = function (pageUrl) {
+  //   $state.go('app.page', { pageUrl: pageUrl });
+  // }
 
   pageService.getMenuItems().then(function (result) {
     menus = result.menu;
+    var menuItemIndex = 0;
     menus.forEach(function (element) {
+      menuItemIndex++;
       if (pageUrl === element.url) {
+        if (menuItemIndex > 1) {
+          prevNav = menus[menuItemIndex - 2].url;
+        }
+        if (menuItemIndex < menus.length) {
+          nextNav = menus[menuItemIndex].url;
+        }
         $scope.header = element.header;
       }
     }, this);

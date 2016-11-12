@@ -20,6 +20,5 @@ function config($stateProvider, $urlRouterProvider) {
     })
     ;
   // if none of the above states are matched, use this as the fallback
-  // $urlRouterProvider.otherwise('/app/page/js_home');
   $urlRouterProvider.otherwise('/app/page/js_intro');
 }

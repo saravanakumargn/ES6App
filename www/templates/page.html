@@ -1,6 +1,13 @@
-<ion-view>
+<ion-view hide-nav-bar="headerHide">
 	<ion-nav-title>{{header}}</ion-nav-title>
-	<ion-content padding="true">
-		<div ng-repeat="template in templates" ng-include="template.url"></div>
+	<ion-content padding="true" on-tap="onTapPage($event)">
+    <!--<button on-touch="onTouch()" class="button">Test</button>-->
+		<div ng-repeat="template in templates" ng-include="template.url">
+    </div>
+		<!--<a class="button icon icon-left ion-chevron-left" href="#/app/page/{{prevNav}}" ng-disabled="prevNav==null">{{prevNav}}</a>
+		<a class="button icon icon-right ion-chevron-right" href="#/app/page/{{nextNav}}" ng-disabled="nextNav==null">{{nextNav}}</a>-->
+		<!--<a class="button icon icon-left ion-chevron-left" ng-click="setPageUrl(prevNav)" nav-direction="forward" ng-disabled="prevNav==null">{{prevNav}}</a>
+		<a class="button icon icon-right ion-chevron-right" ng-click="setPageUrl(nextNav)" nav-direction="forward" ng-disabled="nextNav==null">{{nextNav}}</a>-->
+
 	</ion-content>
 </ion-view>
