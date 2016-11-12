@@ -15,6 +15,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'hljs'])
       cordova.plugins.Keyboard.disableScroll(true);
 
     }
+    ionic.Platform.fullScreen();
     if (window.StatusBar) {
       // org.apache.cordova.statusbar required
       StatusBar.styleDefault();
