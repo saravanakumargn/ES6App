@@ -42,8 +42,6 @@ function AppCtrl($scope, pageService, $ionicSideMenuDelegate, $ionicPopup) {
 
 function PageController($scope, $stateParams, pageService, $state, $window) {
   $scope.templates = [];
-  // $scope.prevNav = null;
-  // $scope.nextNav = null;
   $scope.headerHide = true;
   var menus = [], pageUrl = $stateParams.pageUrl, pageWidth = $window.innerWidth, tapSideWidth = 20, prevNav = null, nextNav = null;
   $scope.templates = [
@@ -69,10 +67,6 @@ function PageController($scope, $stateParams, pageService, $state, $window) {
     }
   }
   
-  // $scope.setPageUrl = function (pageUrl) {
-  //   $state.go('app.page', { pageUrl: pageUrl });
-  // }
-
   pageService.getMenuItems().then(function (result) {
     menus = result.menu;
     var menuItemIndex = 0;
