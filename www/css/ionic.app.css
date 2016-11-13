@@ -9822,8 +9822,11 @@ li {
     content: "•";
     padding-right: 8px; }
 
-.es6 .list {
-  color: red; }
+code,
+kbd,
+pre,
+samp {
+  font-family: inherit; }
 
 section[hljs] {
   margin-bottom: 6px; }
