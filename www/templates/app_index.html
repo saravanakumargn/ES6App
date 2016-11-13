@@ -1,0 +1,8 @@
+<ion-header-bar align-title="left" class="bar-positive">
+	<div class="buttons">
+		<button class="button button-icon icon ion-close" ng-click="closePopup()"></button>
+	</div>
+</ion-header-bar>
+<ion-content class="has-header">
+	<a class="item" nav-direction="back" ng-repeat="item in menuItems" href="#/app/page/{{item.url}}" ng-click="closePopup()">{{item.header}}</a>
+</ion-content>

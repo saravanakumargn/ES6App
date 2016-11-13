@@ -31,6 +31,13 @@ $button-stable-text:              #024e3e;
 $button-stable-border:            #ee9c4f;
 $base-background-color:           #ffa754;
 $base-color:                      #080603;
+$item-default-bg:                 $base-background-color;
+$item-default-border:             $base-background-color;
+
+$item-default-active-bg:          #ee9c4f;
+$item-default-active-border:      $item-default-active-bg;
+$popup-background-color:          $base-background-color;
+$menu-bg:                         $base-background-color;
 
 // The path for our ionicons font files, relative to the built CSS in www/css
 $ionicons-font-path: "../lib/ionic/fonts" !default;
@@ -38,3 +45,4 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
 // Include all of Ionic
 @import "www/lib/ionic/scss/ionic";
 
+@import "style/all";

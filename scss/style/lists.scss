@@ -1,0 +1,17 @@
+
+li { 
+    padding-left: 16px; 
+    margin-bottom: 6px;
+    &:before {
+        content: "•"; /* Insert content that looks like bullets */
+        padding-right: 8px;
+        /*color: blue;  Or a color you prefer */
+    }
+}
+
+
+.es6 {
+    .list {
+        color: red;
+    }
+}

@@ -4,10 +4,10 @@ angular.module('starter.controllers', [])
   .controller('AppCtrl', AppCtrl)
   ;
 
-AppCtrl.$inject = ['$scope', 'pageService', '$ionicSideMenuDelegate', '$ionicPopup'];
+AppCtrl.$inject = ['$scope', 'pageService', '$ionicSideMenuDelegate', '$ionicPopup', '$state', '$ionicViewSwitcher', '$ionicHistory'];
 PageController.$inject = ['$scope', '$stateParams', 'pageService', '$state', '$window', '$ionicViewSwitcher'];
 
-function AppCtrl($scope, pageService, $ionicSideMenuDelegate, $ionicPopup) {
+function AppCtrl($scope, pageService, $ionicSideMenuDelegate, $ionicPopup, $state, $ionicViewSwitcher, $ionicHistory) {
   $scope.menuItems = [];
   init();
 
@@ -16,17 +16,22 @@ function AppCtrl($scope, pageService, $ionicSideMenuDelegate, $ionicPopup) {
       $scope.menuItems = result.menu;
     });
   }
+
+  $scope.itemClick = function (url) {
+    $ionicViewSwitcher.nextDirection('exit');
+    $state.go('app.page', { pageUrl: url });
+  };
+
   $scope.showPopup = function (event) {
     var menuPopup = $ionicPopup.show({
       cssClass: 'menu',
       scope: $scope,
-      template: '<a class="item " ng-repeat="item in menuItems" href="#/app/page/{{item.url}}" ng-click="closePopup()">{{item.header}}</a>',
-      buttons: [{
-        text: '<i class="icon ion-close"></i>'
-      }]
+      templateUrl: 'templates/app_index.html',
+      buttons: []
     });
     $scope.closePopup = function () {
       menuPopup.close();
+      $ionicViewSwitcher.nextDirection('exit');
     };
   };
 
@@ -49,6 +54,12 @@ function PageController($scope, $stateParams, pageService, $state, $window, $ion
   ];
   $scope.header = "";
   $scope.navDirectionSide = "back";
+
+  $scope.$on("$ionicView.beforeEnter", function (event, data) {
+    if (!$scope.headerHide) {
+      $scope.headerHide = true;
+    }
+  });
 
   $scope.onTapPage = function (event) {
     $scope.navDirectionSide = "forward";

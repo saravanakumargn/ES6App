@@ -3,6 +3,11 @@ angular.module('starter').config(config);
 function config($stateProvider, $urlRouterProvider) {
   $stateProvider
 
+    .state('appIndex', {
+      url: '/app/appIndex',
+      templateUrl: 'templates/app_index.html',
+      controller: 'AppCtrl'
+    })
     .state('app', {
       url: '/app',
       abstract: true,
