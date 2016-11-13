@@ -3,9 +3,8 @@ li {
     padding-left: 16px; 
     margin-bottom: 6px;
     &:before {
-        content: "•"; /* Insert content that looks like bullets */
+        content: "•";
         padding-right: 8px;
-        /*color: blue;  Or a color you prefer */
     }
 }
 

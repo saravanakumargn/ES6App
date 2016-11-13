@@ -9820,23 +9820,13 @@ li {
   margin-bottom: 6px; }
   li:before {
     content: "•";
-    /* Insert content that looks like bullets */
-    padding-right: 8px;
-    /*color: blue;  Or a color you prefer */ }
+    padding-right: 8px; }
 
 .es6 .list {
   color: red; }
 
 section[hljs] {
   margin-bottom: 6px; }
-
-code {
-  padding: 2px 4px;
-  font-size: 90%;
-  color: #024e3e;
-  /*background-color: #024e3e;*/
-  border-radius: 4px;
-  font-weight: bold; }
 
 .menu {
   width: 100%; }
