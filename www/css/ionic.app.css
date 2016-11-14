@@ -3707,7 +3707,7 @@ address {
   line-height: 1.42857; }
 
 a {
-  color: #387ef5; }
+  color: #886aea; }
 
 a.subdued {
   padding-right: 10px;
@@ -9847,3 +9847,6 @@ section[hljs] {
       .menu .popup .popup-buttons button {
         background-color: transparent;
         border: none; }
+
+.popup-head {
+  border-bottom: 1px solid #777777; }
