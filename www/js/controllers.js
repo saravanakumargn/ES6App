@@ -5,7 +5,7 @@ angular.module('starter.controllers', [])
   ;
 
 AppCtrl.$inject = ['$scope', 'pageService', '$ionicSideMenuDelegate', '$ionicPopup', '$state', '$ionicViewSwitcher', '$ionicHistory'];
-PageController.$inject = ['$scope', '$stateParams', 'pageService', '$state', '$window', '$ionicViewSwitcher'];
+PageController.$inject = ['$scope', '$stateParams', 'pageService', '$state', '$window', '$ionicViewSwitcher', '$ionicPopup'];
 
 function AppCtrl($scope, pageService, $ionicSideMenuDelegate, $ionicPopup, $state, $ionicViewSwitcher, $ionicHistory) {
   $scope.menuItems = [];
@@ -35,16 +35,10 @@ function AppCtrl($scope, pageService, $ionicSideMenuDelegate, $ionicPopup, $stat
     };
   };
 
-  $scope.showAlert = function (event) {
-    $ionicPopup.alert({
-      title: event.target.text,
-      template: event.target.title
-    });
-  };
 }
 
-function PageController($scope, $stateParams, pageService, $state, $window, $ionicViewSwitcher) {
-  var menus = [], pageUrl = $stateParams.pageUrl, pageWidth = $window.innerWidth, tapSideWidth = 50, prevNav = null, nextNav = null;
+function PageController($scope, $stateParams, pageService, $state, $window, $ionicViewSwitcher, $ionicPopup) {
+  var menus = [], pageUrl = $stateParams.pageUrl, pageWidth = $window.innerWidth, tapSideWidth = 50, prevNav = null, nextNav = null, isNotesPopupShow = false;
   $scope.templates = [];
   $scope.templates = [
     {
@@ -54,7 +48,28 @@ function PageController($scope, $stateParams, pageService, $state, $window, $ion
   $scope.header = "";
   $scope.navDirectionSide = "back";
 
+
+  $scope.showAlert = function (event) {
+    isNotesPopupShow = true;
+    $ionicPopup.alert({
+      title: event.target.text,
+      template: event.target.title,
+      buttons: [
+        {
+          text: 'Cancel',
+          onTap: function (e) {
+            isNotesPopupShow = false;
+            return true;
+          }
+        }
+      ]
+    });
+  };
+
   $scope.onTapPage = function (event) {
+    if (isNotesPopupShow) {
+      return true;
+    }
     $scope.navDirectionSide = "forward";
     var touchX = event.gesture.center.pageX;
     if (touchX < pageWidth * (tapSideWidth / 100)) {
