@@ -11,7 +11,8 @@
 }
 
 .hljs-comment {
-    color: #40542a
+    color: #944800;
+    font-style: italic;
 }
 
 .hljs-keyword,
