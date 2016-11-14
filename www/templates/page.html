@@ -1,4 +1,4 @@
-<ion-view hide-nav-bar="headerHide" nav-direction="{{navDirectionSide}}">
+<ion-view nav-direction="{{navDirectionSide}}">
 	<ion-nav-title>{{header}}</ion-nav-title>
 	<ion-content padding="true" on-tap="onTapPage($event)">
 		<div ng-repeat="template in templates" ng-include="template.url">

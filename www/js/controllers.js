@@ -44,9 +44,8 @@ function AppCtrl($scope, pageService, $ionicSideMenuDelegate, $ionicPopup, $stat
 }
 
 function PageController($scope, $stateParams, pageService, $state, $window, $ionicViewSwitcher) {
-  var menus = [], pageUrl = $stateParams.pageUrl, pageWidth = $window.innerWidth, tapSideWidth = 20, prevNav = null, nextNav = null;
+  var menus = [], pageUrl = $stateParams.pageUrl, pageWidth = $window.innerWidth, tapSideWidth = 50, prevNav = null, nextNav = null;
   $scope.templates = [];
-  $scope.headerHide = true;
   $scope.templates = [
     {
       url: 'assets/pages/' + pageUrl + '.tpl.html'
@@ -54,12 +53,6 @@ function PageController($scope, $stateParams, pageService, $state, $window, $ion
   ];
   $scope.header = "";
   $scope.navDirectionSide = "back";
-
-  $scope.$on("$ionicView.beforeEnter", function (event, data) {
-    if (!$scope.headerHide) {
-      $scope.headerHide = true;
-    }
-  });
 
   $scope.onTapPage = function (event) {
     $scope.navDirectionSide = "forward";
@@ -77,7 +70,7 @@ function PageController($scope, $stateParams, pageService, $state, $window, $ion
       }
     }
     else {
-      $scope.headerHide = !$scope.headerHide;
+      // Include any tap functionality
     }
   };
 
