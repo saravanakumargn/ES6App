@@ -14,6 +14,15 @@ function config($stateProvider, $urlRouterProvider) {
       templateUrl: 'templates/menu.html',
       controller: 'AppCtrl'
     })
+    .state('app.settings', {
+      url: '/settings',
+      views: {
+        'menuContent': {
+          templateUrl: 'templates/settings.html',
+          controller: 'AppCtrl'
+        }
+      }
+    })
     .state('app.page', {
       url: '/page/:pageUrl',
       views: {
