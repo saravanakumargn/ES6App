@@ -14,11 +14,11 @@ function config($stateProvider, $urlRouterProvider) {
       templateUrl: 'templates/menu.html',
       controller: 'AppCtrl'
     })
-    .state('app.settings', {
-      url: '/settings',
+    .state('app.help', {
+      url: '/help',
       views: {
         'menuContent': {
-          templateUrl: 'templates/settings.html',
+          templateUrl: 'templates/help.html',
           controller: 'AppCtrl'
         }
       }

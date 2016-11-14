@@ -1,7 +1,7 @@
 angular.module('starter.controllers', [])
 
-  .controller('PageCtrl', PageController)
   .controller('AppCtrl', AppCtrl)
+  .controller('PageCtrl', PageController)
   ;
 
 AppCtrl.$inject = ['$scope', 'pageService', '$ionicSideMenuDelegate', '$ionicPopup', '$state', '$ionicViewSwitcher', '$ionicHistory'];
@@ -38,7 +38,7 @@ function AppCtrl($scope, pageService, $ionicSideMenuDelegate, $ionicPopup, $stat
 }
 
 function PageController($scope, $stateParams, pageService, $state, $window, $ionicViewSwitcher, $ionicPopup) {
-  var menus = [], pageUrl = $stateParams.pageUrl, pageWidth = $window.innerWidth, tapSideWidth = 50, prevNav = null, nextNav = null, isNotesPopupShow = false;
+  var menus = [], pageUrl = $stateParams.pageUrl, pageWidth = $window.innerWidth, tapSideWidth = 25, prevNav = null, nextNav = null, isNotesPopupShow = false;
   $scope.templates = [];
   $scope.templates = [
     {
