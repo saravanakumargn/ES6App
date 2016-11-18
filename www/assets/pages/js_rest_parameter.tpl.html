@@ -1,6 +1,6 @@
 <h3>Rest parameters</h3>
-<p>The rest parameter syntax allows us to represent an indefinite number of arguments as an array with <code>...</code> prefix.</p>
-<p>Basic usage</p>
+<p>Putting the rest operator <code>...</code> in front of the last formal parameter means that it will receive all remaining actual parameters in an Array.</p>
+<p>In the below example, marks would collect the second argument of the function (because the first one is mapped to a) and all the consecutive arguments.</p>
 <section hljs hljs-no-escape>
 function student(name, ...marks) {
     console.log(name); // myname
@@ -8,10 +8,13 @@ function student(name, ...marks) {
 }
 student('myname', 10,20,30,40,50);
 </section>
-<p>In the above example, marks would collect the second argument of the function (because the first one is mapped to name) and all the consecutive arguments.</p>
+
 <h4>Difference between rest parameters and the arguments object</h4>
 <p>There are three main differences between rest parameters and the arguments object:</p>
-<ul><li>rest parameters are only the ones that haven't been given a separate name, while the arguments object contains all arguments passed to the function;</li><li>the arguments object is not a real array, while rest parameters are Array instances, meaning methods like sort, map, forEach or pop can be applied on it directly;</li><li>the arguments object has additional functionality specific to itself (like the callee property).</li>
+<ul>
+    <li>rest parameters are only the ones that haven't been given a separate name, while the arguments object contains all arguments passed to the function;</li>
+    <li>the arguments object is not a real array, while rest parameters are Array instances, meaning methods like sort, map, forEach or pop can be applied on it directly;</li>
+    <li>the arguments object has additional functionality specific to itself.</li>
 </ul>
 <p>Working with arguments old way</p>
 <section hljs hljs-no-escape>
@@ -23,7 +26,7 @@ function student(name, marks) {
 }
 student('myname', 7,4,8,2,9);    
 </section>
-<p>Es6 rest parameter implementation.</p>
+<p>The above code is equivalent to the below ES5 standard code</p>
 <section hljs hljs-no-escape>
 function student(name, ...marks) {
     console.log(name); // myname
