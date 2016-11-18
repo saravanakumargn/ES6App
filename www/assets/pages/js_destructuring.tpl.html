@@ -1,35 +1,83 @@
 <h2>Destructuring assignment</h2>
-<p>The destructuring assignment syntax is a JavaScript expression that makes it possible to extract data from arrays or objects into distinct variables.</p>
+<p>Destructuring is a convenient way of extracting values from data stored in (possibly nested) objects and Arrays.</p>
 <section hljs hljs-no-escape>
-var [a,b] = [2,3];
-console.log(a); // 2
-console.log(b); // 3
+var a, b, rest;
+[a, b] = [1, 2];
+console.log(a); // 1
+console.log(b); // 2
 
-var [a, b, ...rest] = [1, 2, 3, 4, 5];
+[a, b, ...rest] = [1, 2, 3, 4, 5];
 console.log(a); // 1
 console.log(b); // 2
 console.log(rest); // [3, 4, 5]
 </section>
+
 <h4>Object destructuring</h4>
+<p>Destructuring objects:</p>
 <section hljs hljs-no-escape>
-var obj = {total: 42, isValid: true};
-var {total, isValid} = obj;
-//var {isValid, total } = o; // This is equivalent to the above assignment.
-var {totalValue, isValidFlag} = obj;
+const obj = {total: 42, isValid: true};
+const {total, isValid} = obj;
 console.log(total); // 42
 console.log(isValid); // true
-
-console.log(typeof total); // number
-console.log(typeof isValid); // boolean
-
-//Different declaration names returns wrong value
-console.log(totalValue); // undefined
-console.log(isValidFlag); // undefined
 </section>
+<p>A variable can be extracted from an object and assigned to a variable with a different name than the object property.</p>
 <section hljs hljs-no-escape>
-var [a] = [];
-console.log(a); // undefined
-var [b = 1] = [];
-console.log(b); // 1
+const obj = {total: 42, isValid: true};
+const {total: tot, isValid: valid} = obj;
+console.log(tot); // 42
+console.log(valid); // true
 </section>
-<br/>
+<p>Nested object and array destructuring</p>
+<section hljs hljs-no-escape>
+var metadata = {
+    title: "Scratchpad",
+    translations: [
+       {
+        last_edit: "2014-04-14T08:43:37",
+        url: "/de/docs/Tools/Scratchpad",
+        title: "JavaScript-Umgebung"
+       }
+    ]
+};
+var { title, translations: [{ last_edit }] } = metadata;
+console.log(title); // Scratchpad
+console.log(last_edit);  // 2014-04-14T08:43:37
+</section>
+
+<h4>Array destructuring</h4>
+<p>Basic variable assignment</p>
+<section hljs hljs-no-escape>
+var valueArray = ["one", "two", "three"];
+var [one, two, three] = valueArray;
+console.log(one); // one
+console.log(two); // two
+console.log(three); // three
+</section>
+<p>A variable can be assigned a default, in the case that the value pulled from the array is undefined.</p>
+<section hljs hljs-no-escape>
+var [one="one", two="two"] = ["1"];
+console.log(one); // 1
+console.log(two); // two
+</section>
+<p>When the regular expression exec() method finds a match, it returns an array containing first the entire matched portion of the string and then the portions of the string that matched each parenthesized group in the regular expression.</p>
+<p>Destructuring assignment allows you to pull the parts out of this array easily, ignoring the full match if it is not needed.</p>
+<section hljs hljs-no-escape>
+const [all, year, month, day] = /^(\d\d\d\d)-(\d\d)-(\d\d)$/.exec('1999-12-28');
+console.log(all); // 1999-12-28
+console.log(year); // 1999
+console.log(month); // 12
+console.log(day); // 28
+</section>
+<h4>Usage</h4>
+<p>We can also destructure in a <code>for-of</code> loop:</p>
+<section hljs hljs-no-escape>
+const user = [
+    {name: 'saravana', age: 31},
+    {name: 'kumar', age: 29},
+];
+for (const {name, age} of user) {
+    console.log(name, age);
+}
+// saravana 31
+// kumar 29
+</section>
