@@ -13,6 +13,10 @@
       "header": "Let & Constants"
     },
     {
+      "url": "js_syntax",
+      "header": "Syntax"
+    },
+    {
       "url": "js_arrow",
       "header": "Arrow functions"
     },

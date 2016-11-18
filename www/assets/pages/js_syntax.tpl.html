@@ -1,0 +1,28 @@
+<h2>for...of</h2>
+<p><code>for-of</code> is a new loop in ES6 that replaces both <code>for-in</code> and <code>forEach()</code> and supports the new iteration protocol.</p>
+<h4>Syntax</h4>
+<section hljs hljs-no-escape>
+for (variable of iterable) {
+  statement
+}
+</section>
+<p>Iterating over an Array</p>
+<section hljs hljs-no-escape>
+let values = [10, 20, 30];
+for (let value of values) {
+  console.log(value);
+}
+// 10
+// 20
+</section>
+<p>Iterating over a String</p>
+<section hljs hljs-no-escape>
+let color = "red";
+for (let c of color) {
+  console.log(c);
+}
+// r
+// e
+// d
+</section>
+<h4>Difference between <code>for...of</code> and <code>for...in</code></h4>
