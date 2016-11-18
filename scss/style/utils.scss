@@ -2,3 +2,11 @@
 section[hljs] {
     margin-bottom: 6px;
 }
+
+code {
+    padding: 2px 4px;
+    font-size: 90%;
+    color: #444;
+    background-color: $stable;
+    border-radius: 4px;
+}
