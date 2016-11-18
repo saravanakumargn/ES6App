@@ -1,18 +1,44 @@
 <h2>Default parameters</h2>
 <p>Default function parameters allow formal parameters to be initialized with default values if no value or undefined is passed.</p>
+<p>In JavaScript, parameters of functions default to undefined. However, in some situations it might be useful to set a different default value. This is where default parameters can help.</p>
 <section hljs hljs-no-escape>
-function multiply(value1=1, value2=1) {
+function multiply(value1, value2=1) {
     return value1 * value2;
 }
 console.log(multiply(4)); // 4
 </section>
-<p>The above default parameter code is equivalent to the following code.</p>
+<p>The above code is equivalent to the below ES5 standard code</p>
 <section hljs hljs-no-escape>
 function multiply(value1, value2) {
-    if (value1 === void 0) { value1 = 1; }
-    if (value2 === void 0) { value2 = 1; }
+    if (value2 === void 0) {
+        value2 = 1;
+    }
     return value1 * value2;
 }
 console.log(multiply(4)); // 4
 </section>
-<br/>
+<h4>Functions as parameters</h4>
+<p>Default parameters are always executed first, function declarations inside the function body evaluate afterwards.</p>
+<p>Functions declared in the function body cannot be referred inside default parameters and throw a Error.</p>
+<p>The below code throws <code>ReferenceError</code></p>
+<section hljs hljs-no-escape>
+function multiply(a, b = sqrt()) {
+    function sqrt() {
+        return Math.SQRT2;
+    }
+    console.log(b); 
+    return a * b;
+}
+console.log(multiply(4));
+</section>
+<p>Working functions parameter code:</p>
+<section hljs hljs-no-escape>
+function sqrt() {
+    return Math.SQRT2;
+}
+function multiply(a, b = sqrt()) {
+    console.log(b); // 1.4142135623730951
+    return a * b;
+}
+console.log(multiply(4)); // 5.656854249492381
+</section>
