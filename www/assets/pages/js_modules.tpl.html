@@ -1,0 +1,35 @@
+<h2>Modules</h2>
+
+<p>JavaScript Module pattern provides a way to wrap public, private methods (and variable) into a single entity. The functions or variables defined in a module are not visible outside unless we explicitly export them.</p>
+
+<h4>Module basics</h4>
+<p>ES6 modules are stored in files.There’s no special module keyword.<p>
+<p>ES6 modules are automatically strict-mode code, even if we don’t write <code>"use strict"</code>. We can use <code>import</code> and <code>export</code> in modules.</p>
+
+<h4>Basic usage</h4>
+<p>Here very basic example for module export and import. Here we are going to create two utility functions.<p> 
+<p><code>generateRandom()</code> : Generates a random number.</p>
+<p><code>sum()</code> : Adds two numbers.<p>
+<section hljs hljs-no-escape>
+// utils.js
+function getRandomNumber() {
+    return Math.random();
+}
+function getSum(a, b) {
+    return a + b;
+}
+export { getRandomNumber, getSum }
+</section>
+<p>We can also rename the values while exporting like this:</p>
+<section hljs hljs-no-escape>
+// utils.js
+// Rest of the declaration...
+export { getRandomNumber as random, getSum as doSum }
+</section>
+<p>Using above utils modules in our main javascript file<p>
+<section hljs hljs-no-escape>
+// main.js
+import { getRandomNumber, getSum } from './utils';
+console.log(getRandomNumber()); // some random number
+console.log(getSum(2, 5)); // 7
+</section>

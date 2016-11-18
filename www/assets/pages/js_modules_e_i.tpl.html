@@ -1,0 +1,122 @@
+<h2>Modules - export</h2>
+<p>The export statement is used to export functions, objects or primitives from a given file (or module).</p>
+<p>There are two different types of export.</p>
+<p><b>1. Multiple named exports</b></p>
+<section hljs hljs-no-escape>
+// utils.js
+export const appValue = Math.PI + Math.SQRT2;
+
+function getRandomNumber() {
+    return Math.random();
+}
+function getSum(a, b) {
+    return a + b;
+}
+
+export { getRandomNumber, getSum }
+</section>
+<p>and import will be like as below</p>
+<section hljs hljs-no-escape>
+// main.js
+import { appValue, getRandomNumber, getSum } from './utils';
+console.log(appValue); // 4.555806215962888
+console.log(getRandomNumber()); // some random number
+console.log(getSum(10, 20)); // 30
+</section>
+<p>We can also import the complete module:</p>
+<section hljs hljs-no-escape>
+// main.js
+import * as appUtils from './utils';
+console.log(appUtils.appValue); // 4.555806215962888
+console.log(appUtils.getRandomNumber()); // some random number
+console.log(appUtils.getSum(2, 5)); // 7
+</section>
+<p>Import a single member of a module.</p>
+<section hljs hljs-no-escape>
+// main.js
+import { getSum } from './utils';
+console.log(getSum(2, 5)); // 7
+</section>
+<p>Import a member with a more convenient alias.</p>
+<section hljs hljs-no-escape>
+// main.js
+import { getSum as appSum } from './utils';
+console.log(appSum(4, 6)); // 10
+</section>
+<p>we can use both default export and named exports like as below:</p>
+<section hljs hljs-no-escape>
+// utils.js
+function getRandomNumber() {
+    return Math.random();
+}
+function getSum(a, b) {
+    return a + b;
+}
+function getGreet(name:string) {
+    return `Welcome ${name}`;
+}
+export default getGreet; // default export
+export { getRandomNumber, getSum } // named exports
+</section>
+<section hljs hljs-no-escape>
+// main.js
+import getGreet, { getRandomNumber, getSum } from './utils';
+console.log(getGreet('gns'));
+console.log(getRandomNumber()); // some random number
+console.log(getSum(10, 20)); // 30
+</section>
+<p>or</p>
+<section hljs hljs-no-escape>
+// main.js
+import getGreet, * as appUtils from './utils';
+console.log(getGreet('gns'));
+console.log(appUtils.getRandomNumber()); // some random number
+console.log(appUtils.getSum(10, 20)); // 30
+</section>
+
+<p><b>2. Single default export</b></p>
+<p>It should be only one defaul export per script.</p>
+<p>Export a single value from the module then you can use default export.</p>
+<p>Example 1:</p>
+<section hljs hljs-no-escape>
+// utils.js
+export default function(a, b) {
+    return a + b;
+};
+</section>
+<section hljs hljs-no-escape>
+// main.js
+import appSum from './utils';
+console.log(appSum(4, 6)); // 10
+</section>
+<p>Example 2:</p>
+<section hljs hljs-no-escape>
+// utils.js
+export default function getSum(a, b) {
+    return a + b;
+};
+</section>
+<section hljs hljs-no-escape>
+// main.js
+import getSum from './utils';
+console.log(getSum(4, 6)); // 10
+</section>
+<p>Example 3:</p>
+<section hljs hljs-no-escape>
+// utils.js
+var util = {
+    getRandomNumber: function() {
+        return Math.random();
+    },
+    getSum: function(a, b) {
+        return a + b;
+    }
+};
+export default util;
+</section>
+<section hljs hljs-no-escape>
+// main.js
+import util from './utils';
+console.log(util.getRandomNumber()); // some random number
+console.log(util.getSum(10, 20)); // 30
+</section>

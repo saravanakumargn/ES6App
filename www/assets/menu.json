@@ -33,16 +33,24 @@
       "header": "Destructuring"
     },
     {
-      "url": "js_classes",
-      "header": "Classes"
-    },
-    {
       "url": "js_collections_set",
       "header": "Collections - Set"
     },    
     {
       "url": "js_collections_map",
       "header": "Collections - Map"
+    },
+    {
+      "url": "js_classes",
+      "header": "Classes"
+    },
+    {
+      "url": "js_modules",
+      "header": "Modules"
+    },
+    {
+      "url": "js_modules_e_i",
+      "header": "Modules - export & import"
     }
   ]
 }
