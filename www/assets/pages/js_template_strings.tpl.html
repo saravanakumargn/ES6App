@@ -29,7 +29,6 @@ How are you?
 <section hljs hljs-no-escape>
 var a = 10, b = 20;
 console.log(`Addition value for ${a} and ${b} is ${a+b}`); // Addition value for 10 and 20 is 30
-
 var user = {name: 'gns'};
 console.log(`Current User: ${user.name.toUpperCase()}.`); // Current User: GNS.
 </section>
@@ -39,28 +38,23 @@ console.log(`Current User: ${user.name.toUpperCase()}.`); // Current User: GNS.
 <section hljs hljs-no-escape>
 var a = 5;
 var b = 10;
-
-function tag(strings, ...values) {
+function tagFun(strings, ...values) {
   console.log(strings[0]); // "Hello "
   console.log(strings[1]); // " world "
   console.log(strings[2]); // ""
   console.log(values[0]);  // 15
   console.log(values[1]);  // 50
-
   return "Bazinga!";
 }
-
-tag`Hello ${ a + b } world ${ a * b }`;
+tagFun`Hello ${ a + b } world ${ a * b }`;
 // "Bazinga!"
 </section>
 
 <h4>Raw strings</h4>
 <p>The special <code>raw</code> property, available on the first function argument of tagged template literals, allows you to access the raw strings as they were entered.</p>
 <section hljs hljs-no-escape>
-function tag(strings, ...values) {
-  console.log(strings.raw[0]); 
-  // "string text line 1 \n string text line 2"
+function tagFun(strings, ...values) {
+  console.log(strings.raw[0]); // "string text line 1 \n string text line 2"
 }
-
-tag`string text line 1 \n string text line 2`;
+tagFun`string text line 1 \n string text line 2`;
 </section>
