@@ -1,0 +1,54 @@
+<h2>for...of</h2>
+<p><code>for-of</code> is a new loop in ES6 that replaces both <code>for-in</code> and <code>forEach()</code> and supports the new iteration protocol.</p>
+<h4>Syntax</h4>
+<section hljs hljs-no-escape>
+for (variable of iterable) {
+  statement
+}
+</section>
+<p>Iterating over an Array</p>
+<section hljs hljs-no-escape>
+let values = [10, 20, 30];
+for (let value of values) {
+  console.log(value);
+}
+// 10
+// 20
+</section>
+<p>Iterating over a String</p>
+<section hljs hljs-no-escape>
+let color = "red";
+for (let c of color) {
+  console.log(c);
+}
+// r
+// e
+// d
+</section>
+<h4>Difference between <code>for...of</code> and <code>for...in</code></h4>
+<p>The <code>for...in</code> loop will iterate over all <a title="It simply means that the property will show up if you iterate over the object using <code>for..in</code> or <code>Object.keys()</code>." ng-click="showAlert($event)">enumerable properties</a> of an object.</p>
+<p>The <code>for...of</code> syntax is specific to collections, rather than all objects.</p>
+<p>The following example shows the difference between a <code>for...of</code> loop and a <code>for...in</code> loop.</p>
+<h4><code>for...in</code> Example</h4>
+<section hljs hljs-no-escape>
+var values = ["one", "two"];
+for (var value in values) {
+    console.log("Index is: "+value);
+}
+// Index is: 0
+// Index is: 1
+for (var value in values) {
+    console.log("Value is: "+values[value]);
+}
+// Value is: one
+// Value is: two
+</section>
+<h4><code>for...of</code> Example</h4>
+<section hljs hljs-no-escape>
+var values = ["one", "two"];
+for (let value of values) {
+    console.log("Value is: "+value);
+}
+// Value is: one
+// Value is: two
+</section>
