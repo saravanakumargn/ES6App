@@ -1,37 +1,76 @@
 <h2>Arrow functions</h2>
-<p>Arrow functions provided the following advantagas</p>
+<p>There are two benefits to arrow functions.</p>
 <ol>
-  <li>An arrow function expression has a shorter syntax <code>=></code> compared to function expressions.</li>
-  <li>Does not bind its own <code>this</code>, <code>arguments</code>, <code>super</code>, or <code>new.target</code>.</li>
+  <li>Shorter syntax <code>=></code> compared to function expressions.</li>
+  <li><code>this</code> is picked from the <a title="Inner functions contain the scope of parent functions even if the parent function has returned.." ng-click="showAlert($event)">lexical scope</a> (also called static scope).</li>
 </ol>
-<p>Arrow functions are always <a title="Functions declared dynamically at runtime called Anonymous functions. Anonymous functions don’t have a name and not hoisted." ng-click="showAlert($event)">anonymous</a>. The examples are below</p>
+
+<p>Arrow functions are always <a title="Functions declared dynamically at runtime called Anonymous functions. Anonymous functions don’t have a name and not hoisted." ng-click="showAlert($event)">anonymous</a>. The examples are below:</p>
 <p>Function without any parameters</p>
 <section hljs hljs-no-escape>
 var intro = () => "Welcome";
-console.log(intro());
-// The above arrow function is equal to the below vanilla JS function declaration
-var intro = function () { return "Welcome"; };
-console.log(intro());
 </section>
+<p>The above code is equivalent of the below:</p>
+<section hljs hljs-no-escape>
+var intro = function intro() {
+  return "Welcome";
+};
+</section>
+<p>Using Arrow function with <code>map</code></p>
+<section hljs hljs-no-escape>
+const arr = [1, 2, 3];
+const squares = arr.map(x => x * x);
+</section>
+<p>The above code is equivalent of the below:</p>
+<section hljs hljs-no-escape>
+var arr = [1, 2, 3];
+var squares = arr.map(function (x) {
+  return x * x;
+});
+</section>
+
 <p>Function with 1 parameter</p>
 <section hljs hljs-no-escape>
 var multiplyBy2 = value1 => value1 * 2;
 console.log(multiplyBy2(4));  // prints 8
-// The above arrow function is equal to the below normal function declaration
-var multiplyBy2 = function (value1) { return value1 * 2; };
-console.log(multiplyBy2(4));  // prints 8
 </section>
+<p>The above code is equivalent of the below:</p>
+<section hljs hljs-no-escape>
+var multiplyBy2 = function multiplyBy2(value1) {
+  return value1 * 2;
+};
+console.log(multiplyBy2(4)); // prints 8
+</section>
+
 <p>Function with more than 2 parameters</p>
 <section hljs hljs-no-escape>
 var add = (value1, value2) => value1 + value2;
 console.log(add(10, 20));   // prints 30
-// The above arrow function is equal to the below normal function declaration
-var add = function (value1, value2) { return value1 + value2; };
-console.log(add(10, 20));   // prints 30
 </section>
+<p>The above code is equivalent of the below:</p>
+<section hljs hljs-no-escape>
+var add = function add(value1, value2) {
+  return value1 + value2;
+};
+console.log(add(10, 20)); // prints 30
+</section>
+
 <h4>this reference</h4>
+<p>The source of this is an important distinguishing aspect of arrow functions:</p>
+<ul>
+  <li>Traditional functions have a <code>dynamic this</code>; its value is determined by how they are called.</li>
+  <li>Arrow functions have a <code>lexical this</code>; its value is determined by the surrounding scope.</li>
+</ul>
+<p>The following variables are all lexical inside arrow functions:</p>
+<ul>
+  <li><code>arguments</code></li>
+  <li><code>super</code></li>
+  <li><code>this</code></li>
+  <li><code>new.target</code></li>
+</ul>
+
 <p>An arrow function does not create its own this context, so this has the original meaning from the enclosing context.</p>
-<p>Working with <code>this</code> until ES5 (old way)</p>
+<p>Working with <code>this</code> until traditional way</p>
 <section hljs hljs-no-escape>
 function Person() {
     var _this = this;
@@ -41,7 +80,7 @@ function Person() {
     }, 1000);
 }
 </section>
-<p>ES6 Arrow function implementation.</p>
+<p>The above code is equivalent of the below:</p>
 <section hljs hljs-no-escape>
 function Person(){
   this.count = 0;
@@ -51,4 +90,15 @@ function Person(){
   }, 1000);
 }
 </section>
-<br/>
+
+<h4>Returning object literals</h4>
+<p>The object literal returned by this arrow function is like below:</p>
+<section hljs hljs-no-escape>
+const f = x => ({ bar: 123 })
+</section>
+<p>The above code is equivalent of the below:</p>
+<section hljs hljs-no-escape>
+var f = function f(x) {
+  return { bar: 123 };
+};
+</section>
