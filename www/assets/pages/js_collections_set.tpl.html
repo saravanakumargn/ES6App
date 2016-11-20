@@ -1,49 +1,60 @@
 <h2>Collections - Set</h2>
-<p>Three new Collections: SET(like Array), MAP(Key-Value Object) and WEAKMAP(like Map, but different)</p>
-<h2>Set object</h2>
-<p>Set objects are collections of values.</p>
-<p>The Set object lets you store unique values of any type.</p>
-<h4>Basic usage</h4>
+<p>the following four data structures are new in ECMAScript 6: <code>Map</code>, <code>WeakMap</code>, <code>Set</code> and <code>WeakSet</code>.</p>
+<p>A Set is a collection of unique elements of any type.</p>
+<p>Basic usage</p>
 <section hljs hljs-no-escape>
-var mySet = new Set();
-mySet.add(1);
-mySet.add("firstName");
-mySet.add(true);
-console.log(mySet); // Set {1, "firstName", true}
-console.log(mySet.size); // 3
-console.log(mySet.has(1)); // true
-mySet.delete("firstName");
-console.log(mySet.size); // 2
-for (let item of mySet) {
+var valueSet = new Set([1,2,2,3]);
+console.log(valueSet); // [1,2,3]
+</section>
+<p>Set add and delete:</p>
+<section hljs hljs-no-escape>
+var valueSet = new Set();
+valueSet.add(1);
+valueSet.add("green");
+console.log(valueSet); // 1, "green"
+valueSet.delete("green");
+console.log(valueSet); // 1
+</section>
+<p>Set size and clear:</p>
+<section hljs hljs-no-escape>
+var valueSet = new Set([3, 7]);
+console.log(valueSet.size); // 2
+valueSet.clear(); // Removes all elements from the Set object.
+console.log(valueSet.size); // 0
+</section>
+<p>Set has:</p>
+<p>It returns boolean value whether an element is present with the given value in the Set object or not.</p>
+<section hljs hljs-no-escape>
+var valueSet = new Set([3, 7]);
+console.log(valueSet.has(3)); // true
+console.log(valueSet.has(31)); // false
+</section>
+<p>Iterating Sets</p>
+<section hljs hljs-no-escape>
+var valueSet = new Set([1,2,2,3]);
+for (let item of valueSet) {
     console.log(item);
 }
-//1
-//true
+// 1
+// 2
+// 3
+</section>
 
-mySet.clear();
-console.log(mySet.size); // 0
-</section>
-<h4>Unique Values</h4>
-<p>A value in the Set may only occur once; it is unique in the Set's collection.</p>
-<section hljs hljs-no-escape>
-var mySet = new Set();
-mySet.add(1);
-mySet.add(1);
-mySet.add(2);
-mySet.add("2");
-console.log(mySet); // Set {1, 2, "2"}
-console.log(mySet.size); // 3
-</section>
 <h4>Converting between Array and Set</h4>
 <p>You can create an Array from a Set using Array.from or the spread operator.</p>
 <p>Set objects store unique values, so any duplicate elements from an Array are deleted when converting.</p>
 <section hljs hljs-no-escape>
-var mySet = new Set([1,2,3,3,true]);
-console.log(mySet); // Set {1, 2, 3, true}
-var array = Array.from(mySet);
-var array1 = [...mySet];
+var valueSet = new Set([1,2,3,3,true]);
+console.log(valueSet); // Set {1, 2, 3, true}
+var array = Array.from(valueSet);
+var array1 = [...valueSet];
 console.log(array); // [1, 2, 3, true]
 console.log(array1); // [1, 2, 3, true]
 </section>
 <h4>Array Vs Set</h4>
-<ul><li>Checking whether an element exists in an collection using indexOf for arrays is slow.</li><li>Set objects let you delete elements by their value. With an array you would have to splice based on a element's index.</li><li>The value NaN cannot be found with indexOf in array.</li><li>Set objects store unique values, you don't have to keep track of duplicates by yourself.</li></ul>
+<ul>
+    <li>Checking whether an element exists in an collection using indexOf for arrays is slow.</li>
+    <li>Set objects let you delete elements by their value. With an array you would have to splice based on a element's index.</li>
+    <li>The value NaN cannot be found with indexOf in array.</li>
+    <li>Set objects store unique values, you don't have to keep track of duplicates by yourself.</li>
+</ul>
