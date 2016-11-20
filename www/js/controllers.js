@@ -17,6 +17,10 @@ function AppCtrl($scope, pageService, $ionicSideMenuDelegate, $ionicPopup, $stat
     });
   }
 
+  $scope.exitApp = function() {
+    ionic.Platform.exitApp();
+  };
+
   $scope.itemClick = function (url) {
     $ionicViewSwitcher.nextDirection('exit');
     $state.go('app.page', { pageUrl: url });
