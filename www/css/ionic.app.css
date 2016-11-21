@@ -9851,3 +9851,6 @@ code {
 
 .popup-head {
   border-bottom: 1px solid #777777; }
+
+.popup-title::first-letter {
+  text-transform: capitalize; }

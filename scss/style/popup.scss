@@ -21,11 +21,10 @@
     }
 }
 
-
-
-
 .popup-head {
   border-bottom: 1px solid lighten($dark, 20%);
 }
 
-
+.popup-title::first-letter {
+    text-transform: capitalize;
+}
