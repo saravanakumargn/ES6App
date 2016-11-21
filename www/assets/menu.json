@@ -37,13 +37,21 @@
       "header": "Destructuring"
     },
     {
+      "url": "js_collections_map",
+      "header": "Collections - Map"
+    },
+    {
+      "url": "js_collections_weakmap",
+      "header": "Collections - WeakMap"
+    },    
+    {
       "url": "js_collections_set",
       "header": "Collections - Set"
     },    
     {
-      "url": "js_collections_map",
-      "header": "Collections - Map"
-    },
+      "url": "js_collections_weakset",
+      "header": "Collections - WeakSet"
+    },    
     {
       "url": "js_classes",
       "header": "Classes"

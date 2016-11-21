@@ -1,0 +1,25 @@
+<h2>Collections - WeakSet</h2>
+<p>The following four data structures are new in ECMAScript 6: <code>Map</code>, <code>WeakMap</code>, <code>Set</code> and <code>WeakSet</code>.</p>
+<p>The WeakSet object lets you store <a title="References to objects in the collection are held weakly. If there is no other reference to an object stored in the WeakSet, they can be garbage collected. This means the garbage collector can remove any object in the set when it's no longer used without the programmer needing to explicitly remove it from the set." ng-click="showAlert($event)">weakly held objects</a> in a collection.</p>
+<p>WeakSets have only three methods, all of them work the same as the Set methods.</p>
+<ul>
+<li><code>WeakSet.prototype.add(value)</code></li>
+<li><code>WeakSet.prototype.has(value)</code></li>
+<li><code>WeakSet.prototype.delete(value)</code></li>
+</ul>
+<p><code>WeakSet</code> collection can‘t be iterated and we cannot determine its size.</p>
+<h4>Examples</h4>
+<section hljs hljs-no-escape>
+var ws = new WeakSet();
+var obj = {};
+var foo = {};
+
+ws.add(window);
+ws.add(obj);
+
+ws.has(window); // true
+ws.has(foo);    // false, foo has not been added to the set
+
+ws.delete(window); // removes window from the set
+ws.has(window);    // false, window has been removed
+</section>

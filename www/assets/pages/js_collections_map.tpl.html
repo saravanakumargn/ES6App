@@ -1,31 +1,49 @@
 <h2>Collections - Map</h2>
-<p>Three new Collections: SET(like Array), MAP(Key-Value Object) and WEAKMAP(like Map, but different)</p>
-<h2>Map object</h2>
-<p>ECMAScript 6 introduces a new data structure to map values to values.</p>
-<p>A Map object is a simple key/value map and can iterate its elements in insertion order.</p>
-<p><code>map.set</code> and <code>map.get</code> methods are used to set and retrive the values from the Map colloection.</p>
+<p>The following four data structures are new in ECMAScript 6: <code>Map</code>, <code>WeakMap</code>, <code>Set</code> and <code>WeakSet</code>.</p>
+<p>The Map object is a simple key/value map. Any value (both objects and <a title="A primitive (primitive value, primitive data type) is data that is not an object and has no methods. In JavaScript, there are 6 primitive data types: string, number, boolean, null, undefined, symbol (new in ECMAScript 2015)." ng-click="showAlert($event)">primitive values</a>) may be used as either a key or a value.</p>
 <h4>Basic usage</h4>
 <section hljs hljs-no-escape>
-var sayings = new Map();
-sayings.set("dog", "woof");
-sayings.set("cat", "meow");
-sayings.set("elephant", "toot");
-console.log(sayings.size); // 3
-console.log(sayings.get("cat")); // meow
-console.log(sayings.get("fox")); // undefined
-console.log(sayings.has("bird")); // false
-for (var [key, value] of sayings) {
-  console.log(key + " goes " + value);
-}
-// "cat goes meow"
-// "elephant goes toot"
-
-sayings.clear();
-console.log(sayings.size); // 0
+var colorsMap = new Map();
+colorsMap.set('redKey','red');
+console.log(colorsMap.get('redKey')); // red
+console.log(colorsMap.has('redKey')); // true
+colorsMap.delete('redKey');
+console.log(colorsMap.has('redKey')); // false
 </section>
-<p>Traditionally, objects have been used to map strings to values.</p>
+<p>Map size and clear:</p>
+<section hljs hljs-no-escape>
+var map = new Map([
+    [ 1, 'one' ],
+    [ 2, 'two' ],
+    [ 3, 'three' ]
+]);
+console.log(map.size); // 3
+map.clear();
+console.log(map.size); // 0
+</section>
+<h4>Iterating Maps with <code>for..of</code></h4>
+<section hljs hljs-no-escape>
+var map = new Map();
+map.set(1, "One");
+map.set(2, "two");
+map.set(3, "three");
+for(let [key,value] of map) {
+    console.log(`Key: ${key} Value: ${value}`);
+}
+</section>
+<h4>Objects Vs maps</h4>
+
 <p>Objects allow you to set keys to values, retrieve those values, delete keys, and detect whether something is stored at a key.</p>
 <p>Map objects, however, have a few more advantages that make them better maps.</p>
-<ul><li>The keys of an Object are Strings, where they can be of any value for a Map.</li><li>You can get the size of a Map easily while you have to manually keep track of size for an Object.</li><li>The iteration of maps is in insertion order of the elements.</li><li>An Object has a prototype, so there are default keys in the map. (this can be bypassed using map = Object.create(null)).</li>
+<ul>
+  <li>The keys of an Object are Strings, where they can be of any value for a Map.</li>
+  <li>You can get the size of a Map easily while you have to manually keep track of size for an Object.</li>
+  <li>The iteration of maps is in insertion order of the elements.</li>
+  <li>An Object has a prototype, so there are default keys in the map. (this can be bypassed using map = Object.create(null)).</li>
+</ul>
 <p>These three tips can help you to decide whether to use a Map or an Object:</p>
-<ul><li>Use maps over objects when keys are unknown until run time, and when all keys are the same type and all values are the same type.</li><li>Use maps in case if there is a need to store primitive values as keys because object treats each key as a string whether it's a number value, boolean value or any other primitive value.</li><li>Use objects when there is logic that operates on individual elements.</li></ul>
+<ul>
+  <li>Use maps over objects when keys are unknown until run time, and when all keys are the same type and all values are the same type.</li>
+  <li>Use maps in case if there is a need to store primitive values as keys because object treats each key as a string whether it's a number value, boolean value or any other primitive value.</li>
+  <li>Use objects when there is logic that operates on individual elements.</li>
+</ul>
