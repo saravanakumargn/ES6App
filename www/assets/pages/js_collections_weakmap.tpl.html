@@ -1,25 +1,27 @@
 <h2>Collections - WeakMap</h2>
 <p>The following four data structures are new in ECMAScript 6: <code>Map</code>, <code>WeakMap</code>, <code>Set</code> and <code>WeakSet</code>.</p>
-<p>The WeakSet object lets you store <a title="References to objects in the collection are held weakly. If there is no other reference to an object stored in the WeakSet, they can be garbage collected. This means the garbage collector can remove any object in the set when it's no longer used without the programmer needing to explicitly remove it from the set." ng-click="showAlert($event)">weakly held objects</a> in a collection.</p>
-<p>WeakSets have only three methods, all of them work the same as the Set methods.</p>
+<p>The <code>WeakMap</code> object is a collection of key/value pairs in which the keys are <a title="References to objects in the collection are held weakly. If there is no other reference to an object stored in the WeakSet, they can be garbage collected. This means the garbage collector can remove any object in the set when it's no longer used without the programmer needing to explicitly remove it from the set." ng-click="showAlert($event)">weakly referenced</a>.</p>
+<p>Keys of WeakMaps are of the type Object only. <a title="A primitive (primitive value, primitive data type) is data that is not an object and has no methods. In JavaScript, there are 6 primitive data types: string, number, boolean, null, undefined, symbol (new in ECMAScript 2015)." ng-click="showAlert($event)">Primitive</a> data types as keys are not allowed (e.g. a <code>Symbol</code> can't be a <code>WeakMap</code> key).</p>
+<p>WeakMaps work mostly like Maps, with the following differences:</p>
 <ul>
-<li><code>WeakSet.prototype.add(value)</code></li>
-<li><code>WeakSet.prototype.has(value)</code></li>
-<li><code>WeakSet.prototype.delete(value)</code></li>
+  <li>WeakMap keys are objects (values can be arbitrary values)</li>
+  <li>WeakMap keys are weakly held</li>
+  <li>You can’t get an overview of the contents of a WeakMap</li>
+  <li>You can’t clear a WeakMap</li>
 </ul>
-<p><code>WeakSet</code> collection can‘t be iterated and we cannot determine its size.</p>
-<h4>Examples</h4>
 <section hljs hljs-no-escape>
-var ws = new WeakSet();
-var obj = {};
-var foo = {};
+var weakmap = new WeakMap()
+weakmap.set({}, 123);
 
-ws.add(window);
-ws.add(obj);
-
-ws.has(window); // true
-ws.has(foo);    // false, foo has not been added to the set
-
-ws.delete(window); // removes window from the set
-ws.has(window);    // false, window has been removed
+var weakmap1 = new WeakMap()
+weakmap1.set(1, "One"); // TypeError: Invalid value used as weak map key
 </section>
+<h4>Why <code>WeakMap</code>?</h4>
+<p>The experienced JavaScript programmer will notice that this API could be implemented in JavaScript with two arrays (one for keys, one for values) shared by the four API methods. </p>
+<p>Such an implementation would have two main inconveniences.</p>
+<ul>
+    <li>The first one is an O(n) search (n being the number of keys in the map).</li>
+    <li>The second one is a memory leak issue.</li>
+</ul>
+<p>With manually written maps, the array of keys would keep references to key objects, preventing them from being garbage collected. In native WeakMaps, references to key objects are held "weakly", which means that they do not prevent garbage collection in case there would be no other reference to the object.</p>
+<p>Because of references being weak, WeakMap keys are not enumerable (i.e. there is no method giving you a list of the keys). If they were, the list would depend on the state of garbage collection, introducing non-determinism.</p>
