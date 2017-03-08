@@ -18,6 +18,7 @@ function AppCtrl($scope, pageService, $ionicSideMenuDelegate, $ionicPopup, $stat
       .then(function successCallback(response) {
         // this callback will be called asynchronously
         // when the response is available
+        alert('111');
         console.log(response.data);
         // response.data.show = false;
         // console.log(response.data.show);
@@ -35,6 +36,8 @@ function AppCtrl($scope, pageService, $ionicSideMenuDelegate, $ionicPopup, $stat
           });
         }
       }, function errorCallback(response) {
+        alert('2');
+        alert(response);
         // called asynchronously if an error occurs
         // or server returns response with an error status.
       });
