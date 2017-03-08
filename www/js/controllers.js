@@ -14,6 +14,7 @@ function AppCtrl($scope, pageService, $ionicSideMenuDelegate, $ionicPopup, $stat
     pageService.getMenuItems().then(function (result) {
       $scope.menuItems = result.menu;
     });
+    alert('111 out');
     $http.get('https://raw.githubusercontent.com/saravanakumargn/ecmascriptapp/master/data/es6app.json')
       .then(function successCallback(response) {
         // this callback will be called asynchronously
