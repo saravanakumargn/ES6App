@@ -20,25 +20,6 @@ angular.module('starter', ['ionic', 'starter.controllers', 'hljs'])
       // org.apache.cordova.statusbar required
       StatusBar.styleDefault();
     }
-var admobid = {};
-        if (/(android)/i.test(navigator.userAgent)) {
-      admobId = {
-        banner: 'ca-app-pub-2445138966914411/1193165206',
-        interstitial: 'ca-app-pub-2445138966914411/6262493201'
-      };
-    }
-    else {
-      admobId = {
-        banner: 'ca-app-pub-2445138966914411/1193165206',
-        interstitial: 'ca-app-pub-2445138966914411/6262493201'
-      };
-    }
-
-    if(window.AdMob) window.AdMob.createBanner({
-  adId: admobid.banner,
-  position: AdMob.AD_POSITION.TOP_CENTER,
-  autoShow: true });
-    
   });
 })
 .filter('highlight', function($sce) {
