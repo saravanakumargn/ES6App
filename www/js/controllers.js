@@ -1,8 +1,7 @@
 angular.module('starter.controllers', [])
 
   .controller('AppCtrl', AppCtrl)
-  .controller('PageCtrl', PageController)
-  ;
+  .controller('PageCtrl', PageController);
 
 AppCtrl.$inject = ['$scope', 'pageService', '$ionicSideMenuDelegate', '$ionicPopup', '$state', '$ionicViewSwitcher', '$ionicHistory'];
 PageController.$inject = ['$scope', '$stateParams', 'pageService', '$state', '$window', '$ionicViewSwitcher', '$ionicPopup'];
@@ -17,13 +16,15 @@ function AppCtrl($scope, pageService, $ionicSideMenuDelegate, $ionicPopup, $stat
     });
   }
 
-  $scope.exitApp = function() {
+  $scope.exitApp = function () {
     ionic.Platform.exitApp();
   };
 
   $scope.itemClick = function (url) {
     $ionicViewSwitcher.nextDirection('exit');
-    $state.go('app.page', { pageUrl: url });
+    $state.go('app.page', {
+      pageUrl: url
+    });
   };
 
   $scope.showPopup = function (event) {
@@ -42,13 +43,17 @@ function AppCtrl($scope, pageService, $ionicSideMenuDelegate, $ionicPopup, $stat
 }
 
 function PageController($scope, $stateParams, pageService, $state, $window, $ionicViewSwitcher, $ionicPopup) {
-  var menus = [], pageUrl = $stateParams.pageUrl, pageWidth = $window.innerWidth, tapSideWidth = 25, prevNav = null, nextNav = null, isNotesPopupShow = false;
+  var menus = [],
+    pageUrl = $stateParams.pageUrl,
+    pageWidth = $window.innerWidth,
+    tapSideWidth = 25,
+    prevNav = null,
+    nextNav = null,
+    isNotesPopupShow = false;
   $scope.templates = [];
-  $scope.templates = [
-    {
-      url: 'assets/pages/' + pageUrl + '.tpl.html'
-    }
-  ];
+  $scope.templates = [{
+    url: 'assets/pages/' + pageUrl + '.tpl.html'
+  }];
   $scope.header = "";
   $scope.navDirectionSide = "back";
 
@@ -58,15 +63,13 @@ function PageController($scope, $stateParams, pageService, $state, $window, $ion
     $ionicPopup.alert({
       title: event.target.text,
       template: event.target.title,
-      buttons: [
-        {
-          text: 'Cancel',
-          onTap: function (e) {
-            isNotesPopupShow = false;
-            return true;
-          }
+      buttons: [{
+        text: 'Cancel',
+        onTap: function (e) {
+          isNotesPopupShow = false;
+          return true;
         }
-      ]
+      }]
     });
   };
 
@@ -79,16 +82,18 @@ function PageController($scope, $stateParams, pageService, $state, $window, $ion
     if (touchX < pageWidth * (tapSideWidth / 100)) {
       if (prevNav != null) {
         $ionicViewSwitcher.nextDirection('back');
-        $state.go('app.page', { pageUrl: prevNav });
+        $state.go('app.page', {
+          pageUrl: prevNav
+        });
       }
-    }
-    else if (touchX > pageWidth * ((100 - tapSideWidth) / 100)) {
+    } else if (touchX > pageWidth * ((100 - tapSideWidth) / 100)) {
       if (nextNav != null) {
         $ionicViewSwitcher.nextDirection('forward');
-        $state.go('app.page', { pageUrl: nextNav });
+        $state.go('app.page', {
+          pageUrl: nextNav
+        });
       }
-    }
-    else {
+    } else {
       // Include any tap functionality
     }
   };

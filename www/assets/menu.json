@@ -37,6 +37,22 @@
       "header": "Destructuring"
     },
     {
+      "url": "js_promises",
+      "header": "Promise"
+    },    
+    {
+      "url": "js_classes",
+      "header": "Classes"
+    },
+    {
+      "url": "js_modules",
+      "header": "Modules"
+    },
+    {
+      "url": "js_modules_e_i",
+      "header": "Modules - export & import"
+    },
+    {
       "url": "js_collections_map",
       "header": "Collections - Map"
     },
@@ -51,18 +67,6 @@
     {
       "url": "js_collections_weakset",
       "header": "Collections - WeakSet"
-    },    
-    {
-      "url": "js_classes",
-      "header": "Classes"
-    },
-    {
-      "url": "js_modules",
-      "header": "Modules"
-    },
-    {
-      "url": "js_modules_e_i",
-      "header": "Modules - export & import"
     }
   ]
 }

@@ -1,0 +1,29 @@
+
+  <h2>Promises</h2>
+  <p>The <code>Promise</code> object is used for asynchronous computations. A Promise represents a value which may be available now, or in the future, or never.</p>
+  <p>A Promise is a proxy for a value not necessarily known when the promise is created. It allows you to associate handlers with an asynchronous action's eventual success value or failure reason. This lets asynchronous methods return values like synchronous methods: instead of immediately returning the final value, the asynchronous method returns a promise to supply the value at some point in the future.</p>
+  <p>A Promise is in one of these states:</p>
+  <ul>
+    <li><code>pending:</code> initial state, not fulfilled or rejected.</li>
+    <li><code>fulfilled:</code> meaning that the operation completed successfully.</li>
+    <li><code>rejected:</code> meaning that the operation failed.</li>
+  </ul>
+  <p>A pending promise can either be fulfilled with a value, or rejected with a reason (error). When either of these options happen, the associated handlers queued up by a promise's then method are called. (If the promise has already been fulfilled or rejected when a corresponding handler is attached, the handler will be called, so there is no race condition between an asynchronous operation completing and its handlers being attached.)</p>
+
+<p>Example</p>
+<section hljs hljs-no-escape>
+var myFirstPromise = new Promise(function(resolve, reject) {
+    //We call resolve(...) when what we were doing async succeeded, and reject(...) when it failed.
+    //In this example, we use setTimeout(...) to simulate async code. 
+    //In reality, you will probably be using something like XHR or an HTML5 API.
+    setTimeout(function() {
+        resolve("Success!"); //Yay! Everything went well!
+    }, 250);
+};
+
+myFirstPromise.then(function(successMessage) {
+    //successMessage is whatever we passed in the resolve(...) function above.
+    //It doesn't have to be a string, but if it is only a succeed message, it probably will be.
+    console.log("Yay! " + successMessage);
+};
+</section>
