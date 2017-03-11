@@ -3,10 +3,18 @@
 cordova platform add android
 
 cordova build --release android
-------------------
-to run the application in device
+--------------------	Build APK steps	---------------------
+Running Your App
+To run your app, all you have to do is enable USB debugging and Developer Mode on your Android device, then run ionic run android --device from the command line.
 
 ionic run android --device
+
+------------------------------------------------
+
+To build the app (create unsighed version)
+
+ionic build android --prod --release
+
 ----------------------------------
 
 Go to the output .apk directory:
