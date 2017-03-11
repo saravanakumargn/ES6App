@@ -14,34 +14,6 @@ function AppCtrl($scope, pageService, $ionicSideMenuDelegate, $ionicPopup, $stat
     pageService.getMenuItems().then(function (result) {
       $scope.menuItems = result.menu;
     });
-    alert('111 out');
-    $http.get('https://raw.githubusercontent.com/saravanakumargn/ecmascriptapp/master/data/es6app.json')
-      .then(function successCallback(response) {
-        // this callback will be called asynchronously
-        // when the response is available
-        alert('111');
-        console.log(response.data);
-        // response.data.show = false;
-        // console.log(response.data.show);
-        response.data.desc = '<p>Kindly try ECMAScript full version.</p><a style="background-color: #4CAF50;color: white;padding: 15px 32px;text-align: center;text-decoration: none;display: inline-block;font-size: 16px;" href="http://ionicframework.com/docs/api/service/$ionicPopover/">View App</a>';
-        if (response.data.show) {
-          $ionicPopup.alert({
-            title: 'Try ECMAScript full version',
-            template: response.data.desc,
-            buttons: [{
-              text: 'Check it later',
-              onTap: function (e) {
-                return true;
-              }
-            }]
-          });
-        }
-      }, function errorCallback(response) {
-        alert('2');
-        alert(response);
-        // called asynchronously if an error occurs
-        // or server returns response with an error status.
-      });
   }
 
   $scope.exitApp = function () {
@@ -78,6 +50,7 @@ function PageController($scope, $stateParams, pageService, $state, $window, $ion
     prevNav = null,
     nextNav = null,
     isNotesPopupShow = false;
+  isStoreButtonClick = false;
   $scope.templates = [];
   $scope.templates = [{
     url: 'assets/pages/' + pageUrl + '.tpl.html'
@@ -85,6 +58,10 @@ function PageController($scope, $stateParams, pageService, $state, $window, $ion
   $scope.header = "";
   $scope.navDirectionSide = "back";
 
+  $scope.openStore = function () {
+    isStoreButtonClick = true;
+    window.open('https://play.google.com/store/apps/details?id=org.saravanakumar.ecmascript');
+  }
 
   $scope.showAlert = function (event) {
     isNotesPopupShow = true;
@@ -102,7 +79,7 @@ function PageController($scope, $stateParams, pageService, $state, $window, $ion
   };
 
   $scope.onTapPage = function (event) {
-    if (isNotesPopupShow) {
+    if (isNotesPopupShow || isStoreButtonClick) {
       return true;
     }
     $scope.navDirectionSide = "forward";

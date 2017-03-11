@@ -25,3 +25,4 @@ weakmap1.set(1, "One"); // TypeError: Invalid value used as weak map key
 </ul>
 <p>With manually written maps, the array of keys would keep references to key objects, preventing them from being garbage collected. In native WeakMaps, references to key objects are held "weakly", which means that they do not prevent garbage collection in case there would be no other reference to the object.</p>
 <p>Because of references being weak, WeakMap keys are not enumerable (i.e. there is no method giving you a list of the keys). If they were, the list would depend on the state of garbage collection, introducing non-determinism.</p>
+<div ng-include src="'assets/pages/js_update.tpl.html'"></div>
