@@ -3,8 +3,10 @@
 cordova platform add android
 
 cordova build --release android
+------------------
+to run the application in device
 
-
+ionic run android --device
 ----------------------------------
 
 Go to the output .apk directory:

@@ -4,7 +4,7 @@ angular.module('starter.controllers', [])
   .controller('PageCtrl', PageController);
 
 AppCtrl.$inject = ['$scope', 'pageService', '$ionicSideMenuDelegate', '$ionicPopup', '$state', '$ionicViewSwitcher', '$ionicHistory', '$http'];
-PageController.$inject = ['$scope', '$stateParams', 'pageService', '$state', '$window', '$ionicViewSwitcher', '$ionicPopup'];
+PageController.$inject = ['$scope', '$stateParams', 'pageService', '$state', '$window', '$ionicViewSwitcher', '$ionicPopup', '$cordovaInAppBrowser'];
 
 function AppCtrl($scope, pageService, $ionicSideMenuDelegate, $ionicPopup, $state, $ionicViewSwitcher, $ionicHistory, $http) {
   $scope.menuItems = [];
@@ -16,9 +16,11 @@ function AppCtrl($scope, pageService, $ionicSideMenuDelegate, $ionicPopup, $stat
     });
   }
 
-  $scope.exitApp = function () {
-    ionic.Platform.exitApp();
-  };
+  // $scope.exitApp = function () {
+  //   console.log('exitApp');
+  //   ionic.Platform.exitApp();
+  //   window.close();
+  // };
 
   $scope.itemClick = function (url) {
     $ionicViewSwitcher.nextDirection('exit');
@@ -42,7 +44,7 @@ function AppCtrl($scope, pageService, $ionicSideMenuDelegate, $ionicPopup, $stat
 
 }
 
-function PageController($scope, $stateParams, pageService, $state, $window, $ionicViewSwitcher, $ionicPopup) {
+function PageController($scope, $stateParams, pageService, $state, $window, $ionicViewSwitcher, $ionicPopup, $cordovaInAppBrowser) {
   var menus = [],
     pageUrl = $stateParams.pageUrl,
     pageWidth = $window.innerWidth,
@@ -58,9 +60,21 @@ function PageController($scope, $stateParams, pageService, $state, $window, $ion
   $scope.header = "";
   $scope.navDirectionSide = "back";
 
-  $scope.openStore = function () {
+  $scope.openStore = function (val) {
+    var url = 'https://play.google.com/store/apps/details?id=org.saravanakumar.ecmascript';
+    if (val == 2) {
+      url = 'https://saravanakumargn.github.io/'
+    }
     isStoreButtonClick = true;
-    window.open('https://play.google.com/store/apps/details?id=org.saravanakumar.ecmascript');
+    document.addEventListener("deviceready", function () {
+      $cordovaInAppBrowser.open(url, '_system')
+        .then(function (event) {
+          isStoreButtonClick = true;
+        })
+        .catch(function (event) {
+          isStoreButtonClick = true;
+        });
+    }, false);
   }
 
   $scope.showAlert = function (event) {
@@ -80,6 +94,7 @@ function PageController($scope, $stateParams, pageService, $state, $window, $ion
 
   $scope.onTapPage = function (event) {
     if (isNotesPopupShow || isStoreButtonClick) {
+      isStoreButtonClick = false;
       return true;
     }
     $scope.navDirectionSide = "forward";

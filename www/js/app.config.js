@@ -1,6 +1,6 @@
 angular.module('starter').config(config);
 
-function config($stateProvider, $urlRouterProvider) {
+function config($stateProvider, $urlRouterProvider, $cordovaInAppBrowserProvider) {
   $stateProvider
 
     .state('appIndex', {
@@ -31,8 +31,20 @@ function config($stateProvider, $urlRouterProvider) {
           controller: 'PageCtrl'
         }
       }
-    })
-    ;
+    });
   // if none of the above states are matched, use this as the fallback
   $urlRouterProvider.otherwise('/app/page/js_intro');
+
+  var defaultOptions = {
+    location: 'no',
+    clearcache: 'no',
+    toolbar: 'no'
+  };
+
+  document.addEventListener("deviceready", function () {
+
+    $cordovaInAppBrowserProvider.setDefaultOptions(options)
+
+  }, false);
+
 }

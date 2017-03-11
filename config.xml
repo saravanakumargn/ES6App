@@ -28,6 +28,7 @@
   <plugin name="cordova-plugin-splashscreen" spec="~4.0.0"/>
   <plugin name="cordova-plugin-statusbar" spec="~2.2.0"/>
   <plugin name="ionic-plugin-keyboard" spec="~2.2.1"/>
+  <plugin name="cordova-plugin-inappbrowser" spec="1.7.0"/>
   <platform name="android">
     <icon src="res/android/icon/drawable-ldpi-icon.png" qualifier="ldpi"/>
     <icon src="res/android/icon/drawable-mdpi-icon.png" qualifier="mdpi"/>
